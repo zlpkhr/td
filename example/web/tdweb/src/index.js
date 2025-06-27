@@ -1,6 +1,4 @@
 import MyWorker from './worker.js?worker';
-//import localforage from 'localforage';
-// import {BroadcastChannel} from 'broadcast-channel'
 import log from './logger.js';
 
 const sleep = ms => new Promise(res => setTimeout(res, ms));
@@ -449,9 +447,6 @@ class FileManager {
       request.onsuccess = () => resolve(request.result);
       request.onerror = () => reject(request.error);
     });
-    //this.store = localforage.createInstance({
-    //name: instanceName
-    //});
     this.isInited = true;
   }
 

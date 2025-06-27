@@ -16,7 +16,6 @@
     "build": "vite build"
   },
   "dependencies": {
-    "broadcast-channel": "^7.1.0",
     "localforage": "^1.7.3"
   },
   "devDependencies": {
