@@ -11,8 +11,8 @@ rm -rf build/wasm
 mkdir -p build/generate
 mkdir -p build/wasm
 
-TD_ROOT=$(grealpath ../../)
-OPENSSL_ROOT=$(grealpath ./build/crypto/)
+TD_ROOT=$(realpath ../../)
+OPENSSL_ROOT=$(realpath ./build/crypto/)
 OPENSSL_CRYPTO_LIBRARY=$OPENSSL_ROOT/lib/libcrypto.a
 OPENSSL_SSL_LIBRARY=$OPENSSL_ROOT/lib/libssl.a
 
