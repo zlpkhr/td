@@ -1,7 +1,6 @@
-import MyWorker from './worker.js';
+import MyWorker from './worker.js?worker';
 //import localforage from 'localforage';
-import BroadcastChannel from 'broadcast-channel';
-import uuid4 from 'uuid/v4';
+// import {BroadcastChannel} from 'broadcast-channel'
 import log from './logger.js';
 
 const sleep = ms => new Promise(res => setTimeout(res, ms));
@@ -286,7 +285,7 @@ class TdClient {
       isBackground: this.isBackground
     };
     log.info('Post state: ', state);
-    this.channel.postMessage(state);
+    // this.channel.postMessage(state);
   }
 
   /** @private */
@@ -362,22 +361,22 @@ class TdClient {
 
   /** @private */
   async closeOtherClients(options) {
-    this.uid = uuid4();
+    this.uid = crypto.randomUUID();
     this.state = 'start';
     this.isBackground = !!options.isBackground;
     this.timestamp = Date.now();
     this.waitSet = new Set();
 
     log.info('close other clients');
-    this.channel = new BroadcastChannel(options.instanceName, {
-      webWorkerSupport: false
-    });
+    // this.channel = new BroadcastChannel(options.instanceName, {
+    //   webWorkerSupport: false
+    // });
 
     this.postState();
 
-    this.channel.onmessage = message => {
-      this.onBroadcastMessage(message);
-    };
+    // this.channel.onmessage = message => {
+    //   this.onBroadcastMessage(message);
+    // };
 
     await sleep(300);
     if (this.waitSet.size !== 0) {

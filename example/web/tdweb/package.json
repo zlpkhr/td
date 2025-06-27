@@ -2,7 +2,11 @@
   "name": "tdweb",
   "version": "1.8.50",
   "description": "JavaScript interface for TDLib (Telegram library)",
+  "type": "module",
   "main": "dist/tdweb.js",
+  "exports": {
+    "import": "./dist/tdweb.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/tdlib/td.git",
@@ -12,7 +16,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "vite build",
     "start": "webpack-dev-server --open"
   },
   "keywords": [
@@ -43,6 +47,7 @@
     "lint-staged": "^8.1.5",
     "prettier": "^1.17.0",
     "typescript": "^3.4.5",
+    "vite": "^7.0.0",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "worker-loader": "^2.0.0"
@@ -70,9 +75,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.4.3",
-    "broadcast-channel": "^2.1.12",
-    "localforage": "^1.7.3",
-    "uuid": "^3.3.2"
+    "broadcast-channel": "^7.1.0",
+    "localforage": "^1.7.3"
   },
   "babel": {
     "presets": [

@@ -2,7 +2,7 @@ import localforage from 'localforage';
 import log from './logger.js';
 import { instantiateAny } from './wasm-utils.js';
 
-import td_wasm_release from './prebuilt/release/td_wasm.wasm';
+import td_wasm_release from './prebuilt/release/td_wasm.wasm?url';
 
 const tdlibVersion = 6;
 const localForageDrivers = [
@@ -987,7 +987,7 @@ class TdClient {
 
 const client = new TdClient((e, t = []) => postMessage(e, t));
 
-onmessage = function(e) {
+self.onmessage = function(e) {
   try {
     client.send(e.data);
   } catch (error) {
